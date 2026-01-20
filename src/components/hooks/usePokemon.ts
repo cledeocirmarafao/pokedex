@@ -46,7 +46,6 @@ export const usePokemonList = (selectedType: string) => {
     try {
       // tipagem generic pra ajudar o ts a entender com precisão oque está na variável
       const { data } = await axios.get<PokemonDetails>(url);
-      console.log(data);
 
       return {
         id: data.id,
@@ -92,11 +91,11 @@ export const usePokemonList = (selectedType: string) => {
 
     try {
       const { data } = await axios.get(
-        `${API_BASE}/pokemon/limit=${LIMIT}&offset${newOffset}`
+        `${API_BASE}/pokemon?limit=${LIMIT}&offset=${newOffset}`,
       );
 
       const details = await Promise.all(
-        data.results.map((p: { url: string }) => fetchPokemonDetails(p.url))
+        data.results.map((p: { url: string }) => fetchPokemonDetails(p.url)),
       );
       const validPokemon = details.filter(Boolean) as Pokemon[];
 
@@ -171,7 +170,7 @@ export const usePokemonDetails = (id: string | undefined) => {
 
       try {
         const { data } = await axios.get<PokemonDetails>(
-          `${API_BASE}/pokemon/${id}`
+          `${API_BASE}/pokemon/${id}`,
         );
         setPokemon(data);
 
@@ -181,7 +180,7 @@ export const usePokemonDetails = (id: string | undefined) => {
             const abilityData = abilityRes.data;
 
             const englishEffect = abilityData.effect_entries.find(
-              (e: { language: { name: string } }) => e.language.name === "en"
+              (e: { language: { name: string } }) => e.language.name === "en",
             );
             return {
               name: a.ability.name,
@@ -190,7 +189,7 @@ export const usePokemonDetails = (id: string | undefined) => {
                 englishEffect?.effect ||
                 "No effect available",
             };
-          })
+          }),
         );
         setAbilities(abilityDetails);
       } catch (err) {
