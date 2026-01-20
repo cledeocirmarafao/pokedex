@@ -1,336 +1,442 @@
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap");
 
-@import 'tailwindcss';
+@import "tailwindcss";
 
-@theme {
-    /* Colors */
+@layer base {
+  :root {
+    /* Colors - Light Mode (default) */
     --color-background: 240 20% 98%;
     --color-foreground: 240 10% 10%;
-    
+
     --color-card: 0 0% 100%;
     --color-card-foreground: 240 10% 10%;
-    
+
     --color-popover: 0 0% 100%;
     --color-popover-foreground: 240 10% 10%;
-    
+
     --color-primary: 280 100% 60%;
     --color-primary-foreground: 0 0% 100%;
-    
+
     --color-secondary: 190 100% 50%;
     --color-secondary-foreground: 240 10% 10%;
-    
+
     --color-muted: 240 10% 90%;
     --color-muted-foreground: 240 10% 40%;
-    
+
     --color-accent: 320 100% 55%;
     --color-accent-foreground: 0 0% 100%;
-    
+
     --color-destructive: 0 84% 60%;
     --color-destructive-foreground: 0 0% 100%;
-    
+
     --color-border: 240 10% 85%;
     --color-input: 240 10% 85%;
     --color-ring: 280 100% 60%;
-    
+
     /* Custom Pokemon theme tokens */
     --color-neon-cyan: 185 100% 55%;
     --color-neon-magenta: 320 100% 55%;
     --color-neon-yellow: 50 100% 55%;
     --color-neon-green: 150 100% 45%;
     --color-neon-purple: 280 100% 60%;
-    
+
     /* Border radius */
     --radius: 1rem;
     --radius-lg: 1rem;
     --radius-md: calc(1rem - 2px);
     --radius-sm: calc(1rem - 4px);
-    
-    /* Font families */
-    --font-sans: 'Exo 2', sans-serif;
-    --font-display: 'Orbitron', sans-serif;
-}
+  }
 
-@theme dark {
+  /* Dark Mode Override */
+  .dark {
     --color-background: 240 25% 6%;
     --color-foreground: 0 0% 95%;
-    
+
     --color-card: 240 20% 10%;
     --color-card-foreground: 0 0% 95%;
-    
+
     --color-popover: 240 20% 10%;
     --color-popover-foreground: 0 0% 95%;
-    
+
     --color-primary: 280 100% 65%;
     --color-primary-foreground: 0 0% 100%;
-    
+
     --color-secondary: 185 100% 55%;
     --color-secondary-foreground: 240 25% 6%;
-    
+
     --color-muted: 240 15% 15%;
     --color-muted-foreground: 240 10% 60%;
-    
+
     --color-accent: 320 100% 60%;
     --color-accent-foreground: 0 0% 100%;
-    
+
     --color-destructive: 0 70% 50%;
     --color-destructive-foreground: 0 0% 100%;
-    
+
     --color-border: 240 15% 20%;
     --color-input: 240 15% 20%;
     --color-ring: 280 100% 65%;
-}
+  }
 
-@layer base {
-    * {
-        border-color: hsl(var(--color-border));
-    }
+  * {
+    border-color: hsl(var(--color-border));
+  }
 
-    body {
-        @apply font-sans antialiased;
-        background-color: hsl(var(--color-background));
-        color: hsl(var(--color-foreground));
-    }
-    
-    h1, h2, h3, h4, h5, h6 {
-        font-family: var(--font-display);
-    }
+  body {
+    @apply font-sans antialiased;
+    background-color: hsl(var(--color-background));
+    color: hsl(var(--color-foreground));
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  select,
+  a {
+    font-family: "Orbitron", sans-serif;
+  }
 }
 
 @layer components {
-    .glass-card {
-        @apply relative overflow-hidden rounded-2xl;
-        background: hsl(0 0% 100% / 0.15);
-        backdrop-filter: blur(20px);
-        border: 1px solid hsl(0 0% 100% / 0.3);
-        box-shadow: 
-            0 8px 32px hsl(0 0% 0% / 0.1),
-            inset 0 1px 0 hsl(0 0% 100% / 0.1);
-    }
+  .glass-card {
+    @apply relative overflow-hidden rounded-2xl;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(0 0% 100% / 0.1);
+    box-shadow:
+      0 8px 32px hsl(0 0% 0% / 0.1),
+      inset 0 1px 0 hsl(0 0% 100% / 0.1);
+  }
 
-    .glass-card::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-            135deg,
-            hsl(0 0% 100% / 0.1) 0%,
-            transparent 50%
-        );
-        pointer-events: none;
-    }
+  .glass-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      hsl(0 0% 100% / 0.1) 0%,
+      transparent 50%
+    );
+    pointer-events: none;
+  }
 
-    .neon-glow {
-        box-shadow: 
-            0 0 20px hsl(var(--color-neon-cyan) / 0.3),
-            0 0 40px hsl(var(--color-neon-magenta) / 0.2),
-            0 0 60px hsl(var(--color-neon-purple) / 0.1);
-    }
-    
-    .neon-text {
-        text-shadow: 
-            0 0 10px hsl(var(--color-neon-cyan) / 0.8),
-            0 0 20px hsl(var(--color-neon-cyan) / 0.5),
-            0 0 40px hsl(var(--color-neon-cyan) / 0.3);
-    }
-    
-    .neon-border {
-        border: 1px solid transparent;
-        background: 
-            linear-gradient(hsl(var(--color-card)), hsl(var(--color-card))) padding-box,
-            linear-gradient(135deg, hsl(var(--color-neon-cyan)), hsl(var(--color-neon-magenta)), hsl(var(--color-neon-purple))) border-box;
-    }
-    
-    .pokemon-gradient-bg {
-        background: 
-            radial-gradient(ellipse at 20% 20%, hsl(280 100% 30% / 0.4) 0%, transparent 50%),
-            radial-gradient(ellipse at 80% 80%, hsl(185 100% 30% / 0.3) 0%, transparent 50%),
-            radial-gradient(ellipse at 50% 50%, hsl(320 100% 30% / 0.2) 0%, transparent 70%),
-            hsl(var(--color-background));
-    }
-    
-    .animate-float {
-        animation: float 0.3s ease-in-out infinite;
-    }
+  .bg-gradient-radial {
+    background: radial-gradient(
+      circle,
+      hsl(var(--color-neon-cyan)) 0%,
+      hsl(var(--color-neon-magenta)) 50%,
+      transparent 70%
+    );
+  }
 
-    .animate-glow-pulse {
-        animation: glow-pulse 2s ease-in-out infinite;
-    }
+  .neon-glow {
+    box-shadow:
+      0 0 20px hsl(var(--color-neon-cyan) / 0.3),
+      0 0 40px hsl(var(--color-neon-magenta) / 0.2),
+      0 0 60px hsl(var(--color-neon-purple) / 0.1);
+  }
 
-    .animate-slide-up {
-        animation: slide-up 0.6s ease-out forwards;
-    }
+  .neon-magenta {
+    box-shadow:
+      0 0 20px hsl(var(--color-neon-cyan) / 0.2),
+      0 0 10px hsl(var(--color-neon-magenta) / 0.3),
+      0 0 30px hsl(var(--color-neon-purple) / 0.1);
+  }
 
-    .animate-fade-scale {
-        animation: fade-scale 0.5s ease-out forwards;
-    }
+  .neon-text {
+    text-shadow:
+      0 0 10px hsl(var(--color-neon-cyan) / 0.8),
+      0 0 20px hsl(var(--color-neon-cyan) / 0.5),
+      0 0 40px hsl(var(--color-neon-cyan) / 0.3);
+  }
 
-    .animate-hero-entrance {
-        animation: hero-entrance 1s ease-out forwards;
-    }
+  .group:hover .group-hover\:neon-text {
+    text-shadow:
+      0 0 10px hsl(var(--color-neon-cyan) / 0.8),
+      0 0 20px hsl(var(--color-neon-cyan) / 0.5),
+      0 0 40px hsl(var(--color-neon-cyan) / 0.3);
+  }
 
-    .stagger-1 { animation-delay: 0.1s; }
-    .stagger-2 { animation-delay: 0.2s; }
-    .stagger-3 { animation-delay: 0.3s; }
-    .stagger-4 { animation-delay: 0.4s; }
-    .stagger-5 { animation-delay: 0.5s; }
+  .neon-border {
+    border: 1px solid transparent;
+    background:
+      linear-gradient(hsl(var(--color-card)), hsl(var(--color-card)))
+        padding-box,
+      linear-gradient(
+          135deg,
+          hsl(var(--color-neon-cyan)),
+          hsl(var(--color-neon-magenta)),
+          hsl(var(--color-neon-purple))
+        )
+        border-box;
+  }
 
-    .animate-spin-slow {
-        animation: spin-slow 8s linear infinite;
-    }
+  .pokemon-gradient-bg {
+    background:
+      radial-gradient(
+        ellipse at 20% 20%,
+        hsl(280 100% 30% / 0.4) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse at 80% 80%,
+        hsl(185 100% 30% / 0.3) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse at 50% 50%,
+        hsl(320 100% 30% / 0.2) 0%,
+        transparent 70%
+      ),
+      hsl(var(--color-background));
+    transition: background 0.3s ease;
+  }
 
-    .animate-spin-reverse {
-        animation: spin-reverse 12s linear infinite;
-    }
+  .animate-float {
+    animation: float 0.3s ease-in-out infinite;
+  }
 
-    .animate-particle {
-        animation: particle 3s ease-in-out infinite;
-    }
+  .animate-float-slow {
+    animation: float 4s ease-in-out infinite;
+  }
 
-    .animate-pokeball-shake {
-        animation: pokeball-shake 0.5s ease-in-out;
-    }
+  .animate-glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
 
-    .animate-energy-burst {
-        animation: energy-burst 0.8s ease-out forwards;
-    }
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out forwards;
+  }
 
-    .animate-text-glow {
-        animation: text-glow 2s ease-in-out infinite;
-    }
+  .animate-fade-scale {
+    animation: fade-scale 0.5s ease-out forwards;
+  }
+
+  .animate-hero-entrance {
+    animation: hero-entrance 1s ease-out forwards;
+  }
+
+  .stagger-1 {
+    animation-delay: 0.1s;
+  }
+  .stagger-2 {
+    animation-delay: 0.2s;
+  }
+  .stagger-3 {
+    animation-delay: 0.3s;
+  }
+  .stagger-4 {
+    animation-delay: 0.4s;
+  }
+  .stagger-5 {
+    animation-delay: 0.5s;
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 8s linear infinite;
+  }
+
+  .animate-spin-reverse {
+    animation: spin-reverse 12s linear infinite;
+  }
+
+  .animate-particle {
+    animation: particle 3s ease-in-out infinite;
+  }
+
+  .animate-pokeball-shake {
+    animation: pokeball-shake 0.5s ease-in-out;
+  }
+
+  .animate-energy-burst {
+    animation: energy-burst 0.8s ease-out forwards;
+  }
+
+  .animate-text-glow {
+    animation: text-glow 2s ease-in-out infinite;
+  }
 }
 
 @layer utilities {
-    .text-gradient-primary {
-        background: linear-gradient(135deg, hsl(var(--color-neon-cyan)), hsl(var(--color-neon-magenta)));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-    
-    .text-gradient-neon {
-        background: linear-gradient(135deg, hsl(var(--color-neon-cyan)), hsl(var(--color-neon-purple)), hsl(var(--color-neon-magenta)));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-    
-    .bg-gradient-neon {
-        background: linear-gradient(135deg, hsl(var(--color-neon-cyan)), hsl(var(--color-neon-magenta)));
-    }
-    
-    .bg-gradient-purple {
-        background: linear-gradient(135deg, hsl(var(--color-neon-purple)), hsl(var(--color-neon-magenta)));
-    }
+  .text-gradient-primary {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--color-neon-cyan)),
+      hsl(var(--color-neon-magenta))
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-neon {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--color-neon-cyan)),
+      hsl(var(--color-neon-purple)),
+      hsl(var(--color-neon-magenta))
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-neon {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--color-neon-cyan)),
+      hsl(var(--color-neon-magenta))
+    );
+  }
+
+  .bg-gradient-purple {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--color-neon-purple)),
+      hsl(var(--color-neon-magenta))
+    );
+  }
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 @keyframes glow-pulse {
-    0%, 100% { 
-        box-shadow: 
-            0 0 20px hsl(var(--color-neon-cyan) / 0.3),
-            0 0 40px hsl(var(--color-neon-magenta) / 0.2);
-    }
-    50% { 
-        box-shadow: 
-            0 0 30px hsl(var(--color-neon-cyan) / 0.5),
-            0 0 60px hsl(var(--color-neon-magenta) / 0.3);
-    }
+  0%,
+  100% {
+    box-shadow:
+      0 0 20px hsl(var(--color-neon-cyan) / 0.3),
+      0 0 40px hsl(var(--color-neon-magenta) / 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 30px hsl(var(--color-neon-cyan) / 0.5),
+      0 0 60px hsl(var(--color-neon-magenta) / 0.3);
+  }
 }
 
 @keyframes spin-slow {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes spin-reverse {
-    from { transform: rotate(360deg); }
-    to { transform: rotate(0deg); }
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
 }
 
 @keyframes particle {
-    0%, 100% {
-        transform: translateY(0) scale(1);
-        opacity: 0.6;
-    }
-    50% {
-        transform: translateY(-100px) scale(1.5);
-        opacity: 1;
-    }
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-100px) scale(1.5);
+    opacity: 1;
+  }
 }
 
 @keyframes pokeball-shake {
-    0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(-15deg); }
-    50% { transform: rotate(15deg); }
-    75% { transform: rotate(-10deg); }
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
 }
 
 @keyframes energy-burst {
-    0% {
-        transform: rotate(var(--rotation, 0deg)) scaleY(0);
-        opacity: 1;
-    }
-    50% {
-        transform: rotate(var(--rotation, 0deg)) scaleY(1.5);
-        opacity: 0.8;
-    }
-    100% {
-        transform: rotate(var(--rotation, 0deg)) scaleY(2);
-        opacity: 0;
-    }
+  0% {
+    transform: rotate(var(--rotation, 0deg)) scaleY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: rotate(var(--rotation, 0deg)) scaleY(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: rotate(var(--rotation, 0deg)) scaleY(2);
+    opacity: 0;
+  }
 }
 
 @keyframes text-glow {
-    0%, 100% {
-        text-shadow: 
-            0 0 20px hsl(var(--color-neon-cyan) / 0.5),
-            0 0 40px hsl(var(--color-neon-magenta) / 0.3);
-    }
-    50% {
-        text-shadow: 
-            0 0 40px hsl(var(--color-neon-cyan) / 0.8),
-            0 0 80px hsl(var(--color-neon-magenta) / 0.5),
-            0 0 100px hsl(var(--color-neon-purple) / 0.3);
-    }
+  0%,
+  100% {
+    text-shadow:
+      0 0 20px hsl(var(--color-neon-cyan) / 0.5),
+      0 0 40px hsl(var(--color-neon-magenta) / 0.3);
+  }
+  50% {
+    text-shadow:
+      0 0 40px hsl(var(--color-neon-cyan) / 0.8),
+      0 0 80px hsl(var(--color-neon-magenta) / 0.5),
+      0 0 100px hsl(var(--color-neon-purple) / 0.3);
+  }
 }
 
 @keyframes slide-up {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fade-scale {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes hero-entrance {
-    0% {
-        opacity: 0;
-        transform: translateY(-50px) scale(0.8);
-    }
-    60% {
-        opacity: 1;
-        transform: translateY(10px) scale(1.02);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.8);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(10px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
