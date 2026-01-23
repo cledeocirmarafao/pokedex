@@ -133,7 +133,7 @@ export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
         className={`absolute transition-all duration-700 ${
           phase >= 3 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
-        style={{ paddingTop: "350px" }}
+        style={{ paddingTop: "400px" }}
       >
         <h1 className="text-3xl md:text-4xl font-bold text-gradient-neon animate-text-glow translate-x-2 max-sm:translate-x-2">
           PokéDex
@@ -158,7 +158,7 @@ export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
             }}
           />
         </div>
-        <p className={`text-center text-muted-foreground text-3xl mt-3 transition-opacity duration-300 ${phase >= 1 && phase < 5 ? 'opacity-100' : 'opacity-0'}`}>
+        <p className={`text-center text-[hsl(var(--color-muted-foreground))] text-3xl mt-3 transition-opacity duration-300 ${phase >= 1 && phase < 5 ? 'opacity-100' : 'opacity-0'}`}>
           Loading...
         </p>
       </div>
