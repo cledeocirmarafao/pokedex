@@ -14,18 +14,15 @@
     --color-border: 240 10% 85%;
     --color-ring: 280 100% 60%;
 
-    /* Custom Pokemon theme tokens */
     --color-neon-cyan: 185 100% 55%;
     --color-neon-magenta: 320 100% 55%;
     --color-neon-yellow: 50 100% 55%;
     --color-neon-green: 150 100% 45%;
     --color-neon-purple: 280 100% 60%;
 
-    /* Border radius */
     --radius: 1rem;
   }
 
-  /* Dark Mode Override */
   .dark {
     --color-background: 240 25% 6%;
     --color-foreground: 0 0% 95%;
