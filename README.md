@@ -156,20 +156,20 @@ PokemonDetail Page:
 
 ### 🧩 _Frontend_
 
-| Tecnologia         | Função                                                  |
-| -----------------  | ------------------------------------------------------- |
-| **React**          | Biblioteca para construção de UI com componentes        |
-| **TypeScript**     | Superset JavaScript com tipagem estática                |
-| **Vite**           | Build tool ultra-rápido com HMR instantâneo             |
-| **TailwindCSS**    | Framework CSS utility-first para estilização            |
-| **React Router**   | Roteamento client-side entre páginas                    |
+| Tecnologia       | Função                                           |
+| ---------------- | ------------------------------------------------ |
+| **React**        | Biblioteca para construção de UI com componentes |
+| **TypeScript**   | Superset JavaScript com tipagem estática         |
+| **Vite**         | Build tool ultra-rápido com HMR instantâneo      |
+| **TailwindCSS**  | Framework CSS utility-first para estilização     |
+| **React Router** | Roteamento client-side entre páginas             |
 
 ### 🔌 _API & HTTP_
 
-| Tecnologia      | Função                                      |
-| --------------- | ------------------------------------------- |
-| **Axios**       | Cliente HTTP para requisições à API         |
-| **PokéAPI**     | API REST pública com dados de Pokémon       |
+| Tecnologia  | Função                                |
+| ----------- | ------------------------------------- |
+| **Axios**   | Cliente HTTP para requisições à API   |
+| **PokéAPI** | API REST pública com dados de Pokémon |
 
 ### 🧪 _Testes_
 
@@ -182,9 +182,9 @@ PokemonDetail Page:
 
 ### 🎨 _UI & Ícones_
 
-| Tecnologia        | Função                                |
-| ----------------- | ------------------------------------- |
-| **Lucide React**  | Biblioteca de ícones moderna          |
+| Tecnologia       | Função                       |
+| ---------------- | ---------------------------- |
+| **Lucide React** | Biblioteca de ícones moderna |
 
 ## 🔧 Ferramentas e Integrações
 
@@ -253,16 +253,16 @@ src/__tests__/
 
 ### Cobertura de Testes
 
-| Componente/Hook        | Testes | Cobertura                                    |
-| ---------------------- | -----: | -------------------------------------------- |
-| **SearchInput**        |      2 | onChange, valor controlado                   |
-| **TypeFilter**         |      3 | Seleção, tipos disponíveis                   |
-| **ThemeToggle**        |      1 | Alternância dark/light                       |
-| **PokemonCard**        |      3 | Renderização, navegação, formatação          |
-| **usePokemonList**     |      4 | Busca, filtro, loadMore, erros               |
-| **usePokemonDetails**  |      4 | Busca detalhes, habilidades, erros           |
-| **Index Page**         |      8 | Loading, filtros, busca, interações          |
-| **ThemeContext**       |      3 | Estado inicial, toggle, erro sem Provider    |
+| Componente/Hook       | Testes | Cobertura                                 |
+| --------------------- | -----: | ----------------------------------------- |
+| **SearchInput**       |      2 | onChange, valor controlado                |
+| **TypeFilter**        |      3 | Seleção, tipos disponíveis                |
+| **ThemeToggle**       |      1 | Alternância dark/light                    |
+| **PokemonCard**       |      3 | Renderização, navegação, formatação       |
+| **usePokemonList**    |      4 | Busca, filtro, loadMore, erros            |
+| **usePokemonDetails** |      4 | Busca detalhes, habilidades, erros        |
+| **Index Page**        |      8 | Loading, filtros, busca, interações       |
+| **ThemeContext**      |      3 | Estado inicial, toggle, erro sem Provider |
 
 **Total:** _28 testes unitários_ | **Framework:** Vitest + React Testing Library
 
@@ -290,7 +290,7 @@ npm test Index
 ✅ **Sem detalhes de implementação** — Não testa CSS, estrutura DOM  
 ✅ **Código limpo** — DRY, helpers de renderização, mocks focados  
 ✅ **Nomes descritivos** — Expressa intenção, não mecânica  
-✅ **Cobertura estratégica** — Valida fluxos críticos e edge cases  
+✅ **Cobertura estratégica** — Valida fluxos críticos e edge cases
 
 ## 📄 Licença
 
@@ -345,7 +345,7 @@ Conventional Commits:
 
 ## ✨ Autor
 
-**Cledeocir Marafão** — `Desenvolvedor FullStack` *em formação*.
+**Cledeocir Marafão** — `Desenvolvedor FullStack` _em formação_.
 
 ---
 

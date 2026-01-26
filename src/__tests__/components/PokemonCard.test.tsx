@@ -8,24 +8,27 @@ const renderWithRoute = (component: React.ReactElement) => {
   return render(<BrowserRouter>{component}</BrowserRouter>);
 };
 
-describe('PokemonCard Component', () => {
-    const mockPokemon = {
-        id:149,
-        name: 'dragonite',
-        image: 'https://example.com/dragonite.png',
-    }
-    
-    it('Renders Pokémon information correctly', () => {
-        renderWithRoute(<PokemonCard {...mockPokemon}/>)
+describe("PokemonCard Component", () => {
+  const mockPokemon = {
+    id: 149,
+    name: "dragonite",
+    image: "https://example.com/dragonite.png",
+  };
 
-        expect(screen.getByText('dragonite')).toBeInTheDocument()
-        expect(screen.getByText('#149')).toBeInTheDocument()
-        expect(screen.getByAltText('dragonite')).toHaveAttribute('src', mockPokemon.image)
-    })
+  it("Renders Pokémon information correctly", () => {
+    renderWithRoute(<PokemonCard {...mockPokemon} />);
 
-    it('Navigate to the details page by clicking', () => {
-        renderWithRoute(<PokemonCard {...mockPokemon} id={9}/>)
+    expect(screen.getByText("dragonite")).toBeInTheDocument();
+    expect(screen.getByText("#149")).toBeInTheDocument();
+    expect(screen.getByAltText("dragonite")).toHaveAttribute(
+      "src",
+      mockPokemon.image,
+    );
+  });
 
-        expect(screen.getByText('#009')).toBeInTheDocument()
-    })
-})
+  it("Navigate to the details page by clicking", () => {
+    renderWithRoute(<PokemonCard {...mockPokemon} id={9} />);
+
+    expect(screen.getByText("#009")).toBeInTheDocument();
+  });
+});

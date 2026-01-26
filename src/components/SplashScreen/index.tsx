@@ -8,11 +8,11 @@ interface SplashScreenProps {
 export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
   useEffect(() => {
     const timers = [
-      setTimeout(() => setPhase(1), 500), 
-      setTimeout(() => setPhase(2), 1500), 
-      setTimeout(() => setPhase(3), 2500), 
-      setTimeout(() => setPhase(4), 3000), 
-      setTimeout(() => setPhase(5), 4000), 
+      setTimeout(() => setPhase(1), 500),
+      setTimeout(() => setPhase(2), 1500),
+      setTimeout(() => setPhase(3), 2500),
+      setTimeout(() => setPhase(4), 3000),
+      setTimeout(() => setPhase(5), 4000),
       setTimeout(() => onComplete(), 4500),
     ];
 
@@ -21,7 +21,6 @@ export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
     };
   }, [onComplete]);
   const [phase, setPhase] = useState(0);
-
 
   return (
     <section
@@ -103,7 +102,7 @@ export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
                 "w-4 h-4 rounded-full transition-all duration-500",
                 phase >= 2
                   ? "bg-linear-to-br from-[hsl(var(--color-neon-cyan))] to-[hsl(var(--color-neon-magenta))] shadow-[0_0_30px_hsl(var(--color-neon-cyan)),0_0_60px_hsl(var(--color-neon-magenta))]"
-                  : "bg-gray-100"
+                  : "bg-gray-100",
               )}
             />
 
@@ -141,7 +140,7 @@ export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
         <p
           className={cn(
             "text-center text-2xl text-[hsl(var(--color-muted-foreground))] mt-4 transition-all duration-500 delay-300 max-sm:text-[1rem]",
-            phase >= 4 ? "opacity-100" : "opacity-0"
+            phase >= 4 ? "opacity-100" : "opacity-0",
           )}
         >
           Gotta Catch 'Em All
@@ -150,15 +149,18 @@ export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
 
       <div className="absolute max-sm:translate-y-28 max-2xl:translate-y-20 max-xl:translate-y-36 bottom-40 left-1/2 -translate-x-1/2 w-64 ">
         <div className="h-1 bg-muted rounded-full overflow-hidden">
-          <div 
-            className="h-full transition-all duration-4000 ease-out" 
-            style={{ 
-              width: phase >= 1 ? '100%' : '0%',
-              background: 'linear-gradient(135deg, hsl(var(--color-neon-cyan)), hsl(var(--color-neon-magenta)))'
+          <div
+            className="h-full transition-all duration-4000 ease-out"
+            style={{
+              width: phase >= 1 ? "100%" : "0%",
+              background:
+                "linear-gradient(135deg, hsl(var(--color-neon-cyan)), hsl(var(--color-neon-magenta)))",
             }}
           />
         </div>
-        <p className={`text-center text-[hsl(var(--color-muted-foreground))] text-3xl mt-3 transition-opacity duration-300 ${phase >= 1 && phase < 5 ? 'opacity-100' : 'opacity-0'}`}>
+        <p
+          className={`text-center text-[hsl(var(--color-muted-foreground))] text-3xl mt-3 transition-opacity duration-300 ${phase >= 1 && phase < 5 ? "opacity-100" : "opacity-0"}`}
+        >
           Loading...
         </p>
       </div>

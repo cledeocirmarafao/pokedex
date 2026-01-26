@@ -4,33 +4,14 @@
 
 @layer base {
   :root {
-    /* Colors - Light Mode (default) */
     --color-background: 240 20% 98%;
     --color-foreground: 240 10% 10%;
 
     --color-card: 0 0% 100%;
-    --color-card-foreground: 240 10% 10%;
 
-    --color-popover: 0 0% 100%;
-    --color-popover-foreground: 240 10% 10%;
-
-    --color-primary: 280 100% 60%;
-    --color-primary-foreground: 0 0% 100%;
-
-    --color-secondary: 190 100% 50%;
-    --color-secondary-foreground: 240 10% 10%;
-
-    --color-muted: 240 10% 90%;
     --color-muted-foreground: 240 10% 40%;
 
-    --color-accent: 320 100% 55%;
-    --color-accent-foreground: 0 0% 100%;
-
-    --color-destructive: 0 84% 60%;
-    --color-destructive-foreground: 0 0% 100%;
-
     --color-border: 240 10% 85%;
-    --color-input: 240 10% 85%;
     --color-ring: 280 100% 60%;
 
     /* Custom Pokemon theme tokens */
@@ -42,9 +23,6 @@
 
     /* Border radius */
     --radius: 1rem;
-    --radius-lg: 1rem;
-    --radius-md: calc(1rem - 2px);
-    --radius-sm: calc(1rem - 4px);
   }
 
   /* Dark Mode Override */
@@ -53,28 +31,10 @@
     --color-foreground: 0 0% 95%;
 
     --color-card: 240 20% 10%;
-    --color-card-foreground: 0 0% 95%;
 
-    --color-popover: 240 20% 10%;
-    --color-popover-foreground: 0 0% 95%;
-
-    --color-primary: 280 100% 65%;
-    --color-primary-foreground: 0 0% 100%;
-
-    --color-secondary: 185 100% 55%;
-    --color-secondary-foreground: 240 25% 6%;
-
-    --color-muted: 240 15% 15%;
     --color-muted-foreground: 240 10% 60%;
 
-    --color-accent: 320 100% 60%;
-    --color-accent-foreground: 0 0% 100%;
-
-    --color-destructive: 0 70% 50%;
-    --color-destructive-foreground: 0 0% 100%;
-
     --color-border: 240 15% 20%;
-    --color-input: 240 15% 20%;
     --color-ring: 280 100% 65%;
   }
 

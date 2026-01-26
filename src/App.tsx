@@ -4,21 +4,21 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThemeProvider } from "./components/contexts/ThemeContext";
 import { PokemonDetail } from "./components/pages/PokemonDetail";
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
-function App(){
+function App() {
   return (
     <QueryClientProvider client={queryClient}>
-    <ThemeProvider>
+      <ThemeProvider>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/pokemon/:id" element={<PokemonDetail />} />
           </Routes>
         </BrowserRouter>
-    </ThemeProvider>
-  </QueryClientProvider>
-  )
+      </ThemeProvider>
+    </QueryClientProvider>
+  );
 }
 
-export default App
+export default App;

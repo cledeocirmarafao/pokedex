@@ -21,7 +21,7 @@ describe("SearchInput Component", () => {
 
     render(<SearchInput value="Charizard" onChange={onChange} />);
 
-    const input = screen.getByDisplayValue('Charizard')
-    expect(input).toBeInTheDocument()
+    const input = screen.getByDisplayValue("Charizard");
+    expect(input).toBeInTheDocument();
   });
 });
