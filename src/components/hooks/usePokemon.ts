@@ -44,7 +44,6 @@ export const usePokemonList = (selectedType: string) => {
 
   const fetchPokemonDetails = async (url: string): Promise<Pokemon | null> => {
     try {
-      // tipagem generic pra ajudar o ts a entender com precisão oque está na variável
       const { data } = await axios.get<PokemonDetails>(url);
 
       return {
